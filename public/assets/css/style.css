@@ -5,7 +5,11 @@ html {
 
 body {
     margin-bottom: 80px;
-    background-image: url("../images");
+    /* background-image: url("../images"); */
+}
+
+h1 {
+    color: red;
 }
 
 .footer {
@@ -18,6 +22,7 @@ body {
 
 .navbar {
     margin-bottom: 0;
+    background-color: dodgerblue;
 }
 
 .jumbotron {
@@ -38,7 +43,7 @@ body {
     left: 0;  
 }
 
-
-
-
-/* font-family: 'Cormorant SC', serif; */
+.container-fluid {
+    background-color: blue;
+    color: white;
+}

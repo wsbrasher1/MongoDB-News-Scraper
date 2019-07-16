@@ -28,6 +28,7 @@ module.exports = function(router) {
                     message: "Added" + docs.insertedCount + " new articles!"
                 });
             }
+            (err) => res.json(err)
         });
     });
     router.get("/api/headlines", function(req, res) {
