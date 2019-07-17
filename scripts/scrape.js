@@ -2,34 +2,47 @@
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-var scrape = function(cb){
-    axios.get("http://www.nytimes.com", function(err, res, body){
-
-    var $ = cheerio.load(body);
-
+var scrape = function() {
+  return axios.get("http://www.nytimes.com").then(res => {
+    var $ = cheerio.load(res.data);
     var articles = [];
 
-    $(".theme-summary").each(function(i, element){
+    $(".assetWrapper").each(function(i, element) {
+      var head = $(this)
+        .find("h2")
+        .text()
+        .trim();
 
-        var head = $(this).children(".story-heading").text().trim();
-        var sum = $(this).children(".summary").text().trim();
+      var url = $(this)
+        .find("a")
+        .attr("href");
 
-        if(head && sum){
-            var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-            var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+      var sum = $(this)
+        .find("p")
+        .text()
+        .trim();
+      
+      var img = $(this)
+        .find("img")
+        .attr("src");
+        
+      if (head && sum && url) {
+        var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+        var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
 
-            var dataToAdd = {
-                headline: headNeat,
-                summary: sumNeat
-            };
-
-            articles.push(dataToAdd);
-
+        var article = {
+            headline: headNeat,
+            summary: sumNeat,
+            url,
+            img
         }
-    });
-    cb(articles);
 
+        articles.push(article)
+      }
     });
+    
+    return articles;
+  });
 };
 
 module.exports = scrape;

@@ -7,7 +7,7 @@ var Headline = require("../models/Headline");
 
 module.exports = {
     fetch: function(cb) {
-        scrape(function(data) {
+        scrape().then(data=> {
             console.log(data)
             var articles = data;
             for(var i = 0; i < articles.length; i++) {
