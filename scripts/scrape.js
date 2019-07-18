@@ -3,7 +3,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 var scrape = function() {
-  return axios.get("https://www.mytimes.com/").then(res => {
+  return axios.get("https://www.nytimes.com/").then(res => {
     var $ = cheerio.load(res.data);
     var articles = [];
 
@@ -25,6 +25,7 @@ var scrape = function() {
       var img = $(this)
         .find("img")
         .attr("src");
+
         
       if (head && sum && url) {
         var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
@@ -36,6 +37,8 @@ var scrape = function() {
             url,
             img
         }
+
+        console.log(article)
 
         articles.push(article)
       }
