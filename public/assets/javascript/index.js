@@ -46,8 +46,10 @@ function createPanel(article) {
     $(["<div class='panel panel-default'>",
     "<div class='panel-heading'>",
     "<h3>",
+    `<a class="linkToArticle" target="_blank" rel="noopener noreferrer" href='https://www.nytimes.com${article.url}'>`,
     article.headline,
-    "<a class='btn btn-success save'>",
+    "</a>",
+    "<button class='btn btn-success save'>",
     "Save Article",
     "</a>",
     "</h3>",
@@ -85,25 +87,26 @@ $(["<div class='alert alert-warning text-center'>",
 articleContainer.append(emptyAlert);
 }
 
-function handleArticleSave() {
-//This function is triggered when the user wants to save an article
-var articleToSave = $(this).parents(".panel").data();
-articleToSave.saved = true;
-//Using a patch method to be semantic since this is an update to an existing record
-//in our collection
-$.ajax({
-    method: "PATCH",
-    url: "/api/headlines",
-    data: articleToSave
-})
-.then(function(data){
-    //If successful, mongoose will send back an object containing a key of "ok" with
-    //the value of 1 (which casts to 'true')
-    if (data.ok) {
-        //Run the initPage function again which will reload the entire list of articles
-        initPage();
-    }
-});
+function handleArticleSave(event) {
+    event.preventDefault()
+    //This function is triggered when the user wants to save an article
+    var articleToSave = $(this).parents(".panel").data();
+    articleToSave.saved = true;
+    //Using a patch method to be semantic since this is an update to an existing record
+    //in our collection
+    $.ajax({
+        method: "PATCH",
+        url: "/api/headlines",
+        data: articleToSave
+    })
+    .then(function(data){
+        //If successful, mongoose will send back an object containing a key of "ok" with
+        //the value of 1 (which casts to 'true')
+        if (data.ok) {
+            //Run the initPage function again which will reload the entire list of articles
+            initPage();
+        }
+    });
 }
 
 function handleArticleScrape() {
