@@ -5,6 +5,7 @@ html {
 
 body {
     margin-bottom: 80px;
+    font-family: 'Poppins', sans-serif;
     /* background-image: url("../images"); */
 }
 
@@ -25,10 +26,12 @@ p {
     width: 100%;
     height: 80px;
     background-color: #d3d3d3;
+    margin-top: 10px;
 }
 #footer-slug {
     color: #0000FF;
     margin-top: 20px;
+    position: relative;
 }
 
 .navbar {
@@ -37,7 +40,7 @@ p {
 }
 
 a {
-    color: lightgrey;
+    color: white;
 }
 
 .jumbotron {
@@ -60,16 +63,53 @@ a {
 }
 
 .container-fluid {
-    background-color: blue;
-    color: white;
+    color: black;
 }
 .btn-success {
     margin-left: 20px;
 }
 
+.panel-heading {
+    background-color: #0000FF;
+}
 .panel panel-default {
     margin-top: 10px;
-    color: #d3d3d3;
+    color: darkgrey;
+    border: 2px solid darkgrey;
+}
+
+#art-panel {
+    border: grey 1px solid;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#saved-panel {
+    border: grey 1px solid;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#scrape-btn {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+#saved-art {
+    border: grey 1px solid;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.btn.btn-danger.delete {
+    margin-left: 20px;
+}
+
+.btn.btn-info.notes {
+    margin-left: 20px;
 }
 
 

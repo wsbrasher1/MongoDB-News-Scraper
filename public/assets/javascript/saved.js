@@ -41,7 +41,7 @@ $(document).ready(function() {
         //This function takes in a single JSON object for an article/headline
         //It constructs a jQuery element containing all of the formatted HTML for the panel
         var panel = 
-        $(["<div class='panel panel-default'>",
+        $(["<div class='panel panel-default' id='saved-art'>",
         "<div class='panel-heading'>",
         "<h3>",
         article.headline,
@@ -69,7 +69,7 @@ $(document).ready(function() {
         $(["<div class='alert alert-warning text-center'>",
         "<h4>Nope. No new articles for you.</h4>",
         "</div>",
-        "<div class='panel panel-default'>",
+        "<div class='panel panel-default' id='saved-panel'>",
         "<div class='panel-heading text-center'>",
         "<h3>Would you like to browse available articles?</h3>",
         "</div>",

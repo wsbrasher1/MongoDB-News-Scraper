@@ -43,7 +43,7 @@ function createPanel(article) {
     //This function takes in a single JSON object for an article/headline
     //It constructs a jQuery element containing all of the formatted HTML for the panel
     var panel = 
-    $(["<div class='panel panel-default'>",
+    $(["<div class='panel panel-default' id='art-panel'>",
     "<div class='panel-heading'>",
     "<h3>",
     `<a class="linkToArticle" target="_blank" rel="noopener noreferrer" href='https://www.nytimes.com${article.url}'>`,
